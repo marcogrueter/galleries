@@ -227,9 +227,21 @@ class Gallery_image_m extends MY_Model
 	 * @param string $value
 	 * @return mixed
 	 */
-	public function dropdown($key, $value)
+	public function dropdown()
 	{
 		$dropdown = array();
+
+		$args = func_get_args();
+
+		if (count($args) == 2)
+		{
+		    list($key, $value) = $args;
+		}
+		else
+		{
+		    $key = $this->primary_key;
+		    $value = $args[0];
+		}
 
 		$query = $this->select(array($key, $value))
 			->join('files', 'files.id = gallery_images.file_id', 'left')
