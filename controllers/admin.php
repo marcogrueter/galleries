@@ -281,10 +281,10 @@ class Admin extends Admin_Controller
 	 */
 	public function preview($id = 0)
 	{
-		$data->gallery  = $this->gallery_m->get($id);
+		$gallery  = $this->gallery_m->get($id);
 
 		$this->template->set_layout('modal', 'admin');
-		$this->template->build('admin/preview', $data);
+		$this->template->build('admin/preview', array('gallery' => $gallery));
 	}
 
 	/**
